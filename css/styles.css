@@ -188,3 +188,30 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+
+/* Login */
+
+.alert-emply{
+  color: red;
+}
+
+.img-logo {
+  max-width: 50%;
+  max-height: 50%;
+  padding-bottom: 4rem;
+}
+#btn {
+  background-color: rgb(15, 97, 250);
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+#buttonDiv {
+  padding: 10px 50px;
+  max-width: 30%;
+  position: absolute;
+}

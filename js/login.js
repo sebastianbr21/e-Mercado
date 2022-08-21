@@ -1,0 +1,50 @@
+var parrafo = document.getElementsByClassName(".alert-emply")
+var btn = document.getElementById('btn');
+
+
+btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    validate();
+    let condicion = validate()
+    if (condicion) {
+        location.href = "index.html"
+    }
+
+})
+
+function validate() {
+    condicion = true;
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+    if(!regexEmail.test(email.value)){
+        let elemento = document.querySelector(".email")
+        elemento.lastElementChild.innerHTML = "Ingresa tu e-mail"
+        condicion = false;
+    }
+
+    if (pass.value.length < 6 || pass.value.trim() == " "){
+        let elemento = document.querySelector(".pass")
+        elemento.lastElementChild.innerHTML = "Ingresa tu contraseña"
+        condicion = false;
+    }
+    
+    return condicion
+
+}
+
+
+//prueba//
+function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID",
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  }
