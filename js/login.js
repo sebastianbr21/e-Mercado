@@ -33,18 +33,21 @@ function validate() {
 }
 
 
-//prueba//
+//   prueba  //
+
 function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
   }
   window.onload = function () {
     google.accounts.id.initialize({
-      client_id: "589550218779-8gtta52f0t6teka1e58g48mlu2krqsa9.apps.googleusercontent.com",
-      callback: handleCredentialResponse
+      client_id: "Y589550218779-8gtta52f0t6teka1e58g48mlu2krqsa9.apps.googleusercontent.com",
+      callback: handleCredentialResponse,
+      auto_select: true,
+      auto: true
     });
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
-      { theme: "outline", size: "large" }  // customization attributes
+      { theme: "filled_blue", size: "large" }
     );
-    google.accounts.id.prompt(); // also display the One Tap dialog
+    google.accounts.id.prompt();
   }
