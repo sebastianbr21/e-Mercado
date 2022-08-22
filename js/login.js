@@ -1,5 +1,6 @@
 var parrafo = document.getElementsByClassName(".alert-emply")
 var btn = document.getElementById('btn');
+var existeUsuarioLogeado = sessionStorage.getItem(".email", ".pass")
 
 
 btn.addEventListener("click", (e) => {
@@ -7,7 +8,7 @@ btn.addEventListener("click", (e) => {
     validate();
     let condicion = validate()
     if (condicion) {
-        location.href = "index.html"
+        location.href = "main.html"
     }
 
 })
@@ -35,19 +36,17 @@ function validate() {
 
 //   prueba  //
 
-function handleCredentialResponse(response) {
+/*function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
   }
   window.onload = function () {
     google.accounts.id.initialize({
-      client_id: "Y589550218779-8gtta52f0t6teka1e58g48mlu2krqsa9.apps.googleusercontent.com",
+      client_id: "589550218779-8gtta52f0t6teka1e58g48mlu2krqsa9.apps.googleusercontent.com",
       callback: handleCredentialResponse,
-      auto_select: true,
-      auto: true
     });
     google.accounts.id.renderButton(
       document.getElementById("buttonDiv"),
       { theme: "filled_blue", size: "large" }
     );
     google.accounts.id.prompt();
-  }
+  }*/

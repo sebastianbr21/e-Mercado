@@ -1,9 +1,7 @@
 
-document.addEventListener("DOMContentLoaded", function() {
+   /* window.location.replace (window.location.origin + "/login.html" );*/
 
-/*if(true)  {
-    window.location.replace (window.location.origin + "/login.html" );
-}*/
+document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
