@@ -8,7 +8,7 @@ btn.addEventListener("click", (e) => {
     validate();
     let condicion = validate()
     if (condicion) {
-        location.href = "main.html"
+        location.href = "index.html"
     }
 
 })
@@ -36,7 +36,7 @@ function validate() {
 
 //   prueba  //
 
-/*function handleCredentialResponse(response) {
+function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
   }
   window.onload = function () {
@@ -49,4 +49,4 @@ function validate() {
       { theme: "filled_blue", size: "large" }
     );
     google.accounts.id.prompt();
-  }*/
+  }
