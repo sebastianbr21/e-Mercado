@@ -1,6 +1,3 @@
-
-   /* window.location.replace (window.location.origin + "/login.html" );*/
-
 document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById("autos").addEventListener("click", function() {

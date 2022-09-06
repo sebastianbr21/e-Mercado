@@ -39,3 +39,10 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.getElementById('nav-localUser').innerHTML = localStorage.getItem('#email')
+
+if (localStorage.getItem('#email') === null){
+
+  window.location.replace (window.location.origin + "/login.html" );
+}

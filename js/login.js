@@ -1,6 +1,5 @@
-var parrafo = document.getElementsByClassName(".alert-emply")
+var parrafo = document.getElementsByClassName(".alert-emply");
 var btn = document.getElementById('btn');
-var existeUsuarioLogeado = sessionStorage.getItem(".email", ".pass")
 
 
 btn.addEventListener("click", (e) => {
@@ -8,8 +7,10 @@ btn.addEventListener("click", (e) => {
     validate();
     let condicion = validate()
     if (condicion) {
-        location.href = "index.html"
+        location.href = "index.html";
     }
+    let elemento = document.querySelector('#email');
+    localStorage.setItem('#email', elemento.value);
 
 })
 
@@ -18,14 +19,14 @@ function validate() {
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
     if(!regexEmail.test(email.value)){
-        let elemento = document.querySelector(".email")
-        elemento.lastElementChild.innerHTML = "Ingresa tu e-mail"
+        let elemento = document.querySelector('#email');
+        elemento.lastElementChild.innerHTML = "Ingresa tu e-mail";
         condicion = false;
     }
 
     if (pass.value.length < 6 || pass.value.trim() == " "){
-        let elemento = document.querySelector(".pass")
-        elemento.lastElementChild.innerHTML = "Ingresa tu contraseña"
+        let elemento = document.querySelector(".pass");
+        elemento.lastElementChild.innerHTML = "Ingresa tu contraseña";
         condicion = false;
     }
     
@@ -34,9 +35,32 @@ function validate() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   prueba  //
 
-function handleCredentialResponse(response) {
+/*function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
   }
   window.onload = function () {
@@ -49,4 +73,4 @@ function handleCredentialResponse(response) {
       { theme: "filled_blue", size: "large" }
     );
     google.accounts.id.prompt();
-  }
+  }*/
