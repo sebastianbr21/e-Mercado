@@ -10,6 +10,36 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    .puntuacion {
+      display: flex;
+      align-items: center;
+    }
+
+    .puntuacion input {
+      position: absolute;
+      top: -100px;
+    }
+
+
+    .puntuacion label {
+      float: right;
+      color: #c1b8b8;
+      font-size: 30px;
+    }
+
+    .puntuacion label:hover,
+    .puntuacion label:hover~label,
+    .puntuacion input:checked~label {
+      color: orange;
+    }
+
+    #valor {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 400;
+      color: blue;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,17 +61,129 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-localUser" href="my-profile.html" role="button">Usuario</a>
+          </ul>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" type="button" class="nav-link" id="nav-localUser" id="dropdownMenuButton1" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i>localUser</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="index.html" onclick="deletUser()">Cerrar sesión</a></li>
+            </div>
+          </div>
           </li>
-        </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
       </div>
+      <h3 id="categoryName"></h3>
+      <hr class="my-3">
+      <dl>
+        <dt>Precio del articulo</dt>
+        <dd>
+         <p id="productCriteria"></p>
+        </dd>
+
+        <dt>Descripción</dt>
+        <dd>
+          <p id="categoryDescription"></p>
+        </dd>
+
+        <dt>Categoria</dt>
+        <dd>
+          <p id="categoryProducto"></p>
+        </dd>
+
+        <dt>Cantidad de vendidos</dt>
+        <dd>
+          <p id="productCount"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <div class="row justify-content-center" style="width: 500px;">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner" id="carrousel-cat">
+                      <!--- acá el carrousel modificado por json-->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </dd>
+        <dt>Comentarios sobre el producto</dt>
+        <dd>
+          <div id="display"></div>
+          <div id="comments"></div>
+          <hr>
+        </dd>
+
+        <dt></dt>
+        <dd>
+          <div></div>
+          <div></div>
+          
+          <!-- espacio de comentarios-->
+        <dt>Realiza tu comentario:</dt>
+        <div class="comment">
+          <textarea id="title" name="textarea" type="text " rows="2" cols="4" class="form-control"
+            placeholder="Escribe un comentario"></textarea>
+          <!-- puntuación-->
+          <div class="puntuacion">
+            <small>
+            <input id="radio1" type="radio"  class="score" name="estrellas" value="5"
+              onclick="document.getElementById('valor').innerHTML='5'">
+            <label for="radio1"><i class='fas fa-star'></i></label>
+            <input id="radio2" type="radio" class="score" name="estrellas" value="4"
+              onclick="document.getElementById('valor').innerHTML='4'">
+            <label for="radio2"><i class='fas fa-star'></i></label>
+            <input id="radio3" type="radio"  class="score"name="estrellas" value="3"
+              onclick="document.getElementById('valor').innerHTML='3'">
+            <label for="radio3"><i class='fas fa-star'></i></label>
+            <input id="radio4" type="radio" class="score" name="estrellas" value="2"
+              onclick="document.getElementById('valor').innerHTML='2'">
+            <label for="radio4"><i class='fas fa-star'></i></label>
+            <input id="radio5" class="score" type="radio" name="estrellas" value="1"
+              onclick="document.getElementById('valor').innerHTML='1'">
+            <label for="radio5"><i class='fas fa-star'></i></label><br>
+          </small>
+          </div><br>
+          Clickeaste el número: <span id="valor"></span><br>
+          <input type="submit" value="Post" onclick="storeComment(); storeScore();" class="btn btn-primary btn-lg"></form>
+        </div>
+        <hr>
+        </dd>
+        <dt>Productos relacionados</dt>
+        <br>
+        <div class="container">
+          <div id="relacionado" class="row d-flex justify-content-evenly">   
+          </div>
+        </div>
+        <br>
     </div>
   </main>
   <footer class="text-muted">

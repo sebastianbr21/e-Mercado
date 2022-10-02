@@ -48,7 +48,7 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" class="img-thumbnail">
@@ -166,3 +166,17 @@ function busq() {
     }
  
 }
+
+
+let button = document.getElementById("contenido-categories");
+
+//función que redirecciona cuando toco cualquier producto de la lista a product-info
+button.addEventListener("click", function () {
+    document.location.href = 'product-info.html';
+});
+
+
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    window.location = "product-info.html"
+  }

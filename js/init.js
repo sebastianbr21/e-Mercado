@@ -44,5 +44,10 @@ document.getElementById('nav-localUser').innerHTML = localStorage.getItem('#emai
 
 if (localStorage.getItem('#email') === null){
 
-  window.location.replace (window.location.origin + "login.html" );
+  window.location.href = `login.html`;
+}
+
+
+function deletUser() {
+  localStorage.removeItem('#email');
 }
