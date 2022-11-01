@@ -30,23 +30,231 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-          </ul>
-          <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" type="button" class="nav-link" id="nav-localUser" id="dropdownMenuButton1" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i>localUser</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="index.html" onclick="deletUser()">Cerrar sesión</a></li>
-            </div>
+        </ul>
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" type="button" class="nav-link" id="nav-localUser"
+            id="dropdownMenuButton1" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false"><i
+              class="fa fa-user fa-fw"></i>localUser</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="index.html" onclick="deletUser()">Cerrar sesión</a></li>
           </div>
-          </li>
+        </div>
+        </li>
       </div>
     </div>
   </nav>
+  <div id="prueba"></div>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
+    </div>
+
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive flip-in-hor-bottom">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col"> </th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Costo unitario</th>
+                  <th scope="col" class="text-center">Cantidad</th>
+                  <th scope="col" class="text-right">Sub-total</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <!-- aquí los productos generados por el json-->
+              <tbody id="cart-list-container">
+              </tbody>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td id="ship-row"> Envío &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span
+                    id="showShipping"></span> USD</strong></td>
+              </tr>
+              <tr class="RE">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="ct-row">Costo total &nbsp;&nbsp;&nbsp;<strong><span id="totalCost"></span> USD</strong></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row justify-content-center align-items-center ">
+            <h2>Tipo de envio</h2>
+            <select id="shipping" class="form-control" onchange="subproductCosttoHTML()">
+              <option value="0.15">Premium 2 a 5 dias (15%)</option>
+              <option value="0.07">Express 5 a 8 dias (7%)</option>
+              <option value="0.05">Standard 12 a 15 dias (5%)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <form class="row g-3 needs-validation" action="#" method="get" id="form" novalidate>
+        <h2>Direccion del envio</h2>
+        <div class="col-7">
+          <label for="inputAddress" class="form-label">Calle</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="8 de octubre" required>
+          <div class="invalid-feedback">
+            Debe una calle.
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="inputAddressNum" class="form-label">Numero</label>
+          <input type="text" class="form-control" id="inputAddressNum" placeholder="5126/Apt 303" required>
+          <div class="invalid-feedback">
+            Debe ingresar un numero.
+          </div>
+        </div>
+        <div class="col-7">
+          <label for="inputAddress2" class="form-label">Esquina</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Comercio" required>
+          <div class="invalid-feedback">
+            Debe ingresar una esquina.
+          </div>
+        </div>
+      <br />
+      <br />
+      <hr>
+      <h2>Formato de pago</h2>
+      <div>
+        <p id="terminos_aceptados" style="display: inline" >No ha selecionado</p>
+      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo">Seleccionar </button>
+        <p id="failedPayMethod" class="text-danger"></p>
+      </div>
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Finaliza tu compra</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="creditCardForm">
+                <div class="heading">
+                  <div class="form-check">
+                    <input class="form-check-input"  type="radio" name="flexRadioDefault" id="creditCard">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      <h2>Tarjeta de credito</h2>
+                    </label>
+                    <hr>
+                    <div class="payment">
+                      <fieldset id="fieldset">
+                        <div class="form-group owner">
+                          <label for="owner">Titular</label>
+                          <input type="text" class="form-control" id="owner" required>
+                          <div class="invalid-feedback">
+                            Debe ingresar un nombre.
+                          </div>
+                        </div>
+                        <div class="form-group" id="card-number-field">
+                          <label for="cardNumber">Numero de tarjeta</label>
+                          <input type="number" class="form-control" id="cardNumber" required>
+                          <div class="invalid-feedback">
+                            Debe ingresar un numero valido.
+                          </div>
+                        </div>
+                        <div class="form-group CVV">
+                          <label for="cvv">CVV</label>
+                          <input type="number" class="form-control" id="cvv" min="100" max="999" required>
+                          <div class="invalid-feedback">
+                            Debe ingresar un numero valido.
+                          </div>
+                        </div>
+                        <br>
+                        <div class="form-group" id="expiration-date">
+                          <label>Fecha de vencimiento</label>
+                          <select required>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero </option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                          </select>
+                          <select required>
+                            <option value="22"> 2022</option>
+                            <option value="23"> 2023</option>
+                            <option value="24"> 2024</option>
+                            <option value="25"> 2025</option>
+                            <option value="26"> 2026</option>
+                            <option value="27"> 2027</option>
+                          </select>
+                        </div>
+                        <div class="form-group" id="credit_cards">
+                          <img src="img/visa.png" id="visa">
+                          <img src="img/mastercard.png" id="mastercard">
+                          <img src="img/amex.png" id="amex">
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="bankTranfer">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  <h2>Tranferencia bancaria</h2>
+                </label>
+                <hr>
+                <label for="">Numero de cuenta</label>
+                <input class="form-control" id="accountnumber" type="number" required>
+                <div class="invalid-feedback">
+                  Debe ingresar un numero de cuenta valido.
+                </div>
+              </div>
+              <br>
+              <div class="form-group modal-footer" id="pay-now">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                  id="confirm-purchase">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr>
+      </div>
+      <div class="d-grid gap-2 mt-4">
+      <button type="submit" class="btn btn-primary btn-block" id="btnp" onclick="metodPay();">Finalizar compra</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+
+    <div class="alert fade" role="alert" id="alertResult">
+      <span id="resultSpan"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   </main>
@@ -71,6 +279,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
 </html>

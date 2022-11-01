@@ -1,10 +1,10 @@
 function windowReplace(id){
-    localStorage.setItem("catID", id);
+    localStorage.setItem("productID", id);
     window.location = "product-info.html"
 }
 
-const PRODUCT_INFO_URL1 = `https://japceibal.github.io/emercado-api/products/${localStorage.getItem("catID")}.json`;
-const PRODUCT_INFO_COMMENTS_URL1 = `https://japceibal.github.io/emercado-api/products_comments/${localStorage.getItem("catID")}.json`;
+const PRODUCT_INFO_URL1 = `https://japceibal.github.io/emercado-api/products/${localStorage.getItem("productID")}.json`;
+const PRODUCT_INFO_COMMENTS_URL1 = `https://japceibal.github.io/emercado-api/products_comments/${localStorage.getItem("productID")}.json`;
 
 function showImagesGallery(array) {
 
@@ -35,17 +35,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             category = resultObj.data;
 
-            let categoryNameHTML = document.getElementById("categoryName");
-            let categoryDescriptionHTML = document.getElementById("categoryDescription");
+            let productNameHTML = document.getElementById("productName");
+            let productDescriptionHTML = document.getElementById("productDescription");
             let productCountHTML = document.getElementById("productCount");
             let productCriteriaHTML = document.getElementById("productCriteria");
-            let categoryProductoHTML = document.getElementById("categoryProducto")
+            let productProductoHTML = document.getElementById("categoryProducto")
 
-            categoryNameHTML.innerHTML = category.name;
+            productNameHTML.innerHTML = category.name;
             productCountHTML.innerHTML = category.soldCount;
-            categoryDescriptionHTML.innerHTML = category.description;
+            productDescriptionHTML.innerHTML = category.description;
             productCriteriaHTML.innerHTML = category.currency + " " + category.cost;
-            categoryProductoHTML.innerHTML = category.category;
+            productProductoHTML.innerHTML = category.category;
 
             showImagesGallery(category.images);
             

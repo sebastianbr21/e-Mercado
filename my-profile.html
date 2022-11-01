@@ -59,11 +59,59 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    
+  <div class="container">
+    <div class="">
+      <br>
+      <h2>Tu Perfil:</h2>
+      <br>
+      <img class="" id="myImg" src="" height="100">
     </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-sm-6">
+        <label for="nombre" class="form-label">Primer nombre</label>
+        <input type="text" class="form-control" id="nombre">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="apellido" class="form-label" >Primer apellido</label>
+        <input type="text" class="form-control" id="apellido"> 
+      </div>
+
+      <div class="col-sm-6">
+        <label for="segundonombre" class="form-label">Segundo nombre</label>
+        <input type="text" class="form-control" id="segundonombre" >
+      </div>
+
+      <div class="col-sm-6">
+        <label for="segundoapellido" class="form-label">Segundo apellido</label>
+        <input type="text" class="form-control" id="segundoapellido" >
+      </div>
+
+      <div class="col-sm-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <label>Imagen de perfil</label>
+        <div class="row">
+          <input type="file" accept="image/*" onchange="importFileandPreview()">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <label for="telefono" class="form-label">Telefono de contacto</label>
+        <input type="number" class="form-control" id="telefono">
+      </div>
+
+    </div>
+    <hr>
+    <button type="button" class="btn btn-primary"
+            onclick="register(nombre.value, apellido.value, email.value, segundonombre.value, segundoapellido.value,telefono.value);">Guardar cambios</button>
+  </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -78,6 +126,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -50,4 +50,5 @@ if (localStorage.getItem('#email') === null){
 
 function deletUser() {
   localStorage.removeItem('#email');
+  localStorage.clear();
 }
