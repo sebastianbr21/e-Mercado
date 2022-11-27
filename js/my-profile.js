@@ -54,6 +54,7 @@ if (localStorage.nombre != null ) {
     myImg.src = imgSrc;
 }
 
+//Funcio que modifica y carga la imagen en el perfil
 function importFileandPreview() {
     let preview = document.getElementById('myImg');
     let file = document.querySelector('input[type=file]').files[0];

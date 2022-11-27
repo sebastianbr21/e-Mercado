@@ -1,7 +1,7 @@
-var parrafo = document.getElementsByClassName(".alert-emply");
-var btn = document.getElementById('btn');
+let parrafo = document.getElementsByClassName(".alert-emply");
+let btn = document.getElementById('btn');
 
-
+// Generamos un evento el cual ejecuta las validaciones para redirigirnos a la pagina principal y guardar el mail del usuario en el local storage
 btn.addEventListener("click", (e) => {
     e.preventDefault();
     validate();
@@ -13,7 +13,7 @@ btn.addEventListener("click", (e) => {
     localStorage.setItem('#email', elemento.value);
 
 })
-
+// Realizamos una validacion de campos donde definimos el largo de la contraseña y la estructura del mail.
 function validate() {
     condicion = true;
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;

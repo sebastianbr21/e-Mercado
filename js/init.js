@@ -40,14 +40,15 @@ let getJSONData = function(url){
     });
 }
 
-document.getElementById('nav-localUser').innerHTML = localStorage.getItem('#email')
+document.getElementById('nav-localUser').innerHTML = localStorage.getItem('#email') // Escribe el mail guardado en el local storage en la barra de navegacion
 
+// Realiza un cambio de ventana en caso de que no haya informacion del mail en el local storage
 if (localStorage.getItem('#email') === null){
 
   window.location.href = `login.html`;
 }
 
-
+// limpia el local storage cuando se cierra la sesion del usuario
 function deletUser() {
   localStorage.removeItem('#email');
   localStorage.clear();
